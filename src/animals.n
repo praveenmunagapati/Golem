@@ -1,0 +1,28 @@
+class(a5, mammal).
+class(a6, mammal).
+class(a7, mammal).
+class(a8, mammal).
+class(a9, mammal).
+class(a10, mammal).
+
+
+
+class(a1, reptile).
+class(a2, reptile).
+class(a3, reptile).
+class(a4, reptile).
+class(a5, reptile).
+class(a8, reptile).
+class(a9, reptile).
+class(a10, reptile).
+
+
+
+class(a1, bird).
+class(a2, bird).
+class(a3, bird).
+class(a4, bird).
+class(a5, bird).
+class(a6, bird).
+class(a7, bird).
+class(a10, bird).

@@ -1,0 +1,88 @@
+Golem	August 1992 version.
+~~~~~
+Enquiries to:
+
+S. Muggleton, steve@prg.oxford.ac.uk
+
+Golem is an ILP algorithm authored by Stephen Muggleton
+and described in the paper
+
+	S. Muggleton and C. Feng, "Efficient induction of logic
+		programs" pp. 281-297 in Inductive Logic Programming,
+		(ed. S. Muggleton), Academic Press, 1992.
+
+This is the August 1992 version of Golem. It comes supplied with
+the following simple datasets.
+
+	animals.b animals.f animals.n
+	choose.b choose.f choose.n
+	lt.b lt.f lt.n
+	mem.b mem.f mem.n
+	mult.b mult.f mult.n
+	qsort.b qsort.f qsort.n
+	rev.b rev.f rev.n
+
+Each of these consists of a .b (background knowledge) file,
+.f (forefground positive examples) and .n (negative examples)
+file, each containing ground instances in Edinburgh Prolog syntax.
+The easiest way to run Golem is in batch mode from the command line as
+follows.
+
+$ golem qsort
+
+The output from the batch run prints the RLGG clauses as they are constructed.
+CPU timings are also given for the construction of these clauses.
+
+Apart from ground instances, commands can be placed in
+the .b file. For instance, qsort.b contains the following
+lines.
+
+!- mode(part(+,+,-,-)).
+!- mode(app(+,+,-)).
+!- mode(qsort(+,-)).
+!- set(rlggsample,2).
+!- determination(qsort/2,part/4).
+!- determination(qsort/2,qsort/2).
+!- determination(qsort/2,app/3).
+
+These are each interactive mode commands for Prolog. To get an explanation
+of each command start Golem from the command
+line without any paramaters. The following is an example of such
+an interaction.
+
+$ golem
+!- help.
+The following commands are available:
+	addhyp/0         covers/0         coversn/0        debug/0
+	determination/2  fixedseed/0      help/0           help/1
+	induce/0         mem/0            mode/1           modes/0
+	op/3             ops/0            randseed/0       rdhyp/0
+	read/2           reduce/0         rlgg/0           rmcover/0
+	sample/3         set/2            settings/0       show/1
+	sizes/0          stats/0          subduce/0        subducen/0
+	write/2
+!- help(mode/1).
+[mode/1 - mode declaration of predicate, eg. mode(mult(+,+,-))]
+!- ^D
+
+Note that you exit from Golem using the end-of-file character (^D).
+
+Golem carries out random sampling of its examples in order to construct
+hypotheses. If you want to get the same result every time
+you should use fixedseed to set the random number generator seed.
+However, if you want to get a range of results it is best to
+use randseed which takes its seed from the system clock.
+
+All induction can be carried out in interactive mode by
+reading in all the examples and background knowledge,
+alternating the induce and addhyp commands, and then writing the rules
+out to a file. This interaction looks as follows.
+
+$ golem
+!- read(all,qsort).
+!- induce.
+!- addhyp.
+..
+!- induce.
+!- addhyp.
+!- write(rules,qsort).

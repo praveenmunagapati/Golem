@@ -1,0 +1,8 @@
+% Negative examples
+mem(0,[1,2]).
+mem(3,[]).
+mem(0,[1]).
+% mem(4,[2,4]).
+nat([]).
+mem(1,[a,1]).
+mem(a,[a]).

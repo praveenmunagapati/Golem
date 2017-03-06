@@ -1,0 +1,12 @@
+choose(4,2,4).
+choose(3,1,1).
+choose(3,1,6).
+choose(4,0,4).
+choose(2,4,1).
+choose(3,2,15).
+choose(1,2,1).
+choose(4,2,1).
+% choose(4,2,2).
+% BAD CLAUSE PRODUCED AFTER REDUCTION WITH FIRST 2 NEG. EXAMPLES
+% choose(A,B,C) :- div(D,B,C), dec(A,E), mult(F,A,D), choose(E,G,F), nat(G).
+% THIRD EXAMPLE DERIVED FROM BAD CLAUSE USING BACKTRACKING
